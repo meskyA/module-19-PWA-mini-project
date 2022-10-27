@@ -1,4 +1,7 @@
 const path = require('path');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+const path = require('path');
+const { InjectManifest } = require('workbox-webpack-plugin');
 
 module.exports = () => {
   return {
@@ -12,14 +15,16 @@ module.exports = () => {
     // TODO: Add the correct output
     // output our bundles.
     output: {
+      
       filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
+
     },
 
     // TODO: Add the correct plugins
     plugins: [
     //  webpack plugin that generates our html file and injects our bundles.
-    new HTMLWebpackPlugin({
+    new HtmlWebpackPlugin({
       template: './index.html',
       title: 'Contact Cards'
     }),
