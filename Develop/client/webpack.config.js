@@ -62,10 +62,17 @@ module.exports = () => {
         {
           test: /\.m?js$/,
           exclude: /node_modules/,
-          // we use bable-loader in order to use ES6
-        }
-      ]
+          // we use bable-loader in order to use ES6.
+          use: {
+            loader: 'babel-loader',
+            options: {
+              pretest: ['@babel/present-env'],
+              plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime'],
+            },
+          },
+        },
+      ],
 
-    }
+    },
   };
 };
